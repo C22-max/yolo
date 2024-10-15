@@ -19,7 +19,9 @@ WORKDIR /app
 
 RUN apk update && apk add npm
 
-COPY --from=build /usr/src/app /app
+COPY --from=build /usr/src/app /app 
+
+RUN npm install webpack@latest react-scripts@latest
 
 # Expose the port the app runs on
 EXPOSE 3000
