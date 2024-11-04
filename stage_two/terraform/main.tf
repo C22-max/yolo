@@ -3,7 +3,6 @@ provider "google" {
   project     = var.project_id
   region      = var.region
 }
-git branch -r
 
 resource "google_compute_instance" "app_server" {
   name         = var.instance_name
