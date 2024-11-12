@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yolo-client
+  labels:
+    app: yolo-client
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: yolo-client
+  template:
+    metadata:
+      labels:
+        app: yolo-client
+    spec:
+      containers:
+      - name: yolo-client
+        image: christinewanjau/yolo-client:v1.0.0
+        ports:
+        - containerPort: 80
+        env:
+        - name: BACKEND_URL
+          value: "http://yolo-backend:3000"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "250m"
